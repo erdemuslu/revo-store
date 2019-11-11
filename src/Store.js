@@ -17,8 +17,17 @@ class Store {
     throw new Error('reducer must be function');
   }
 
+  initState(val) {
+    if (Object.prototype.hasOwnProperty.call(val, 'length')) {
+      this.state = val;
+      return;
+    }
+
+    throw new Error('initial state must be array');
+  }
+
   create(INITIAL_STATE, REDUCER = '') {
-    this.state = INITIAL_STATE;
+    this.initState(INITIAL_STATE);
     this.initReducer(REDUCER);
   }
 }
