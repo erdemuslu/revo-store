@@ -2,10 +2,16 @@ class Store {
   constructor() {
     this.state = null;
     this.reducer = null;
+
+    this.run = this.run.bind(this);
   }
 
   run(action) {
     this.reducer(this.state, action);
+  }
+
+  static render(app) {
+    app();
   }
 
   initReducer(reducer) {
@@ -26,9 +32,14 @@ class Store {
     throw new Error('initial state must be array');
   }
 
-  create(INITIAL_STATE, REDUCER = '') {
+  create(
+    INITIAL_STATE = [],
+    REDUCER = '',
+    APP = (f) => f,
+  ) {
     this.initState(INITIAL_STATE);
     this.initReducer(REDUCER);
+    APP(this);
   }
 }
 
