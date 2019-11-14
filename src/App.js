@@ -28,7 +28,7 @@ const App = (store) => {
     store.state.forEach((item, index) => {
       const btn = createEl({
         name: 'button',
-        className: 'btn',
+        className: 'btn is-remove',
         style: '',
         id: '',
         text: 'Remove',
@@ -48,6 +48,20 @@ const App = (store) => {
     });
   };
 
+  const removeItemFromView = () => {
+    const items = document.querySelectorAll('.item');
+    items.forEach((item, index) => {
+      const node = item;
+      node.querySelector('button').onclick = () => {
+        node.remove();
+        // action is here with Store method
+        store.run(
+          removeItem({ payload: { index } }),
+        );
+      };
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const input = e.target.querySelector('input');
@@ -58,6 +72,7 @@ const App = (store) => {
       addItem({ payload: { value } }),
     );
     addItemIntoView();
+    removeItemFromView();
   };
 
   const init = () => {
