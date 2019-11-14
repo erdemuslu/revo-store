@@ -2,16 +2,13 @@ class Store {
   constructor() {
     this.state = null;
     this.reducer = null;
+    this.viewStore = [];
 
     this.run = this.run.bind(this);
   }
 
   run(action) {
     this.reducer(this.state, action);
-  }
-
-  static render(app) {
-    app();
   }
 
   initReducer(reducer) {
