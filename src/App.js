@@ -2,24 +2,12 @@
 //
 //
 //
+import createEl from './utils';
 import { addItem, removeItem } from './actions/index';
 
 const App = (store) => {
   const form = document.querySelector('form');
   const list = document.querySelector('.list');
-
-  // helper
-  const createEl = ({
-    name, className, style, id, text,
-  }) => {
-    const el = document.createElement(name);
-    el.setAttribute('class', className);
-    el.setAttribute('id', id);
-    el.setAttribute('style', style);
-    el.innerText = text;
-
-    return el;
-  };
 
   const addItemIntoView = () => {
     // remove all nodes
