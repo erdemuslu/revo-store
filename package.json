@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/erdemuslu/revo-store#readme",
   "dependencies": {
-    "parcel": "^1.12.4"
+    "parcel": "^2.8.2"
   },
   "devDependencies": {
     "eslint": "^6.6.0",
